@@ -1,11 +1,11 @@
 test('test runs with custom path', () => {
     const dotenv_action = require('./dotenv_action');
-    expect(dotenv_action("fixtures/.env")).toEqual({ fixtures_1: "123" });
+    expect(dotenv_action("fixtures/.env")).toEqual({ FIXTURES_1: "123" });
 })
 
 test('test runs with different path', () => {
     const dotenv_action = require('./dotenv_action');
-    expect(dotenv_action("fixtures/.another.env")).toEqual({ fixtures_2: "xyz", "other_key": "this" });
+    expect(dotenv_action("fixtures/.another.env")).toEqual({ FIXTURES_2: "xyz", "OTHER_KEY": "this" });
 })
 
 test('test runs with broken path', () => {
