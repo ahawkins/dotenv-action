@@ -20,29 +20,7 @@ Log variables after reading from the `.env` file.
 
 Mask values after reading from the `.env` file.
 
-## Outputs
-
-### `generic`
-
-Whatever is present in the `.env` file will be converted into an output variable.
-
-E.g. you have the following `.env`:
-
-    VERSION=1.0
-    AUTHOR=Mickey Mouse
-
-Then you will have outputs:
-
-    {
-        version: "1.0"
-        author: "Mickey Mouse"
-    }
-
 ## Example usage
-
 
     id: dotenv
     uses: ./.github/actions/dotenv-action
-
-Then later you can refer to the alpine version like this
-`${{ steps.dotenv.outputs.version }}`
