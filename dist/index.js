@@ -264,9 +264,12 @@ try {
     core.getInput('mask-variables').toLowerCase() === 'true';
   const variables = dotenvAction(dotenvFile, logVariables);
 
-  if (maskVariables) {
-    for (const key in variables) {
-      const value = variables[key];
+  for (const key in variables) {
+    const value = variables[key];
+
+    core.exportVariable(key, value)
+
+    if(maskVariables) {
       core.setSecret(value);
     }
   }
@@ -277,13 +280,6 @@ try {
     console.log(
       `loaded ${Object.keys(variables).length} values into the environment`
     );
-  }
-
-  core.setOutput('generic', 'please check for actual outputs');
-
-  for (const key in variables) {
-    const value = variables[key];
-    core.setOutput(key, value);
   }
 } catch (error) {
   core.setFailed(error.message);
